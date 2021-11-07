@@ -3,8 +3,8 @@
 #include <string>
 #include <fstream>
 #include "Aeroflot.h"
-
 using namespace std;
+
 class Airport
 {
 private:
@@ -22,9 +22,17 @@ public:
 	void setLength(int _length) { length = _length; }
 	int getLength() { return length; }
 
-	void creat_airport();
-	void memory_allocation_airport(Aeroflot&);
+	void creat_airport(int);
+	void memory_allocation_airport(Aeroflot&, int);
 
 	void output_to_console();
+
+	void delite_airport();
+	void delite_aeroflot(int);
+
+	void change_aeroflot(int);
+	void print_change_aeroflot_menu();
+
+	void search(string);
 };
 

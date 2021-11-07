@@ -28,16 +28,6 @@ public:
 	void inputNumberFlight();
 	void inputTypeAircraft();
 
-	void inputFileNameDestination();
-	void inputFileNumberFlight();
-	void inputFileTypeAircraft();
-
 	void input_keyboard();
-	void input_from_file(ifstream&);
 	void output_console();
-	void output_to_file(ofstream&);
-
-	void change();
-	void print_menu_change();
-
 };

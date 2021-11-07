@@ -1,8 +1,8 @@
 #include "Aeroflot.h"
 
-string string_name_destination = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ -";
+string string_name_destination = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -";
 string string_number_flight = "SU -1234567890";
-string string__type_aircraft = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ -1234567890";
+string string__type_aircraft = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
 Aeroflot::Aeroflot() : name_destination("uncounted"), number_flight("uncounted"), type_aircraft("uncounted"){
 	cout << "The constructor is called Aeroflot" << endl;
@@ -41,7 +41,7 @@ void Aeroflot::inputNumberFlight() {
 	while (1) {
 		getline(cin, _number_flight);
 		if (_number_flight.find_first_not_of(string_number_flight) == string::npos && _number_flight.find("SU") != string::npos
-			&& _number_flight.size() >= 3 && _number_flight.size() <= 8)
+			&& _number_flight.size() >= 3 && _number_flight.size() <= 6)
 		{
 			number_flight = _number_flight;
 			break;
@@ -71,6 +71,7 @@ void Aeroflot::input_keyboard() {
 	cout << "Введите название пункта назначения рейса" << endl;
 	inputNameDestination();
 	cout << "Введите номер рейса самолета" << endl;
+	cout << "(рейс должен начинаться с 'SU', а затем цифры, но не больше 4х)" << endl;
 	inputNumberFlight();
 	cout << "Введите тип самолета" << endl;
 	inputTypeAircraft();
