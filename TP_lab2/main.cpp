@@ -32,10 +32,10 @@ void menu() {
 			airport.output_to_console();
 			break;
 		case 2:
-			if(airport.getLength() != 0)
-				airport.creat_airport(selection_position_addendum() - 1);
+			if (airport.getLength() != 0)
+				airport += (selection_position_addendum() - 1);
 			else
-				airport.creat_airport(0);
+				airport += 0;
 			break;
 		case 3:
 			if (airport.getLength() != 0)
@@ -50,7 +50,18 @@ void menu() {
 				cout << "В аэропорту нет Аэрофлотов, ничего нельзя изменить" << endl;
 			break;
 		case 5:
-			
+			if (airport.getLength() != 0)
+			{
+				if (airport.getLength() != 1)
+				{
+					airport.sorting_aeroflot();
+					cout << "Аэрофлоты отсортированы" << endl;
+				}
+				else
+					cout << "В аэропорту один Аэрофлот, нет смысла сортировки." << endl;
+			}
+			else
+				cout << "В аэропорту нет Аэрофлотов, ничего нельзя отсортировать." << endl;
 			break;
 		case 6:
 			if (airport.getLength() != 0)
@@ -113,7 +124,7 @@ void delite() {
 				airport.delite_airport();
 				break;
 			case 2:
-				airport.delite_aeroflot(selection_position() - 1);
+				airport -= (selection_position() - 1);
 				break;
 			}
 			if (punkt_menu == 3)

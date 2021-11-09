@@ -43,14 +43,15 @@ Airport& Airport::operator=(const Airport& keeper)
         data[i] = keeper.data[i];
     return *this;
 }
-// переписать 
-void Airport::creat_airport(int index) {
+
+Airport& Airport::operator+=(int index)
+{
     Aeroflot A;
     A.input_keyboard();
-    memory_allocation_airport(A, index);
+    return memory_allocation_airport(A, index);
 }
-// переписать
-void Airport::memory_allocation_airport(Aeroflot& A, int index) {
+
+Airport& Airport::memory_allocation_airport(Aeroflot& A, int index) {
     Aeroflot* tmp = data;
     length++;
     data = new Aeroflot[length];
@@ -63,6 +64,7 @@ void Airport::memory_allocation_airport(Aeroflot& A, int index) {
         if (i == index)
             data[i] = A;
     }
+    return *this;
 }
 
 void Airport::output_to_console() {
@@ -79,16 +81,17 @@ void Airport::output_to_console() {
     }
     cout << endl;
 }
-// переписать
+
 void Airport::delite_airport() {
     delete[] data;
     data = nullptr;
     length = 0;
     cout << "Аэропорт удален" << endl;
 }
-// переписать
-void Airport::delite_aeroflot(int index) {
-    Aeroflot * tmp = new Aeroflot[length - 1];
+
+Airport& Airport::operator-=(int index)
+{
+    Aeroflot* tmp = new Aeroflot[length - 1];
     int t = 0;
     for (int i = 0; i < length; i++)
     {
@@ -98,6 +101,7 @@ void Airport::delite_aeroflot(int index) {
     length--;
     data = tmp;
     cout << "Аэрофлот удален" << endl;
+    return *this;
 }
 
 void Airport::change_aeroflot(int index) {
@@ -155,5 +159,18 @@ void Airport::search(string s) {
         }
         if (flag == 0)
             cout << "Совпадений не найдено. " << endl;
+    }
+}
+
+void Airport::sorting_aeroflot() {
+    Aeroflot A1;
+    for (int i = 0; i < length; i++) {
+        for (int j = i + 1; j < length; j++) {
+            if (data[i].getNumberFlight() > data[j].getNumberFlight()) {
+                A1 = data[i];
+                data[i] = data[j];
+                data[j] = A1;
+            }
+        }
     }
 }
